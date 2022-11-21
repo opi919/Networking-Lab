@@ -8,6 +8,12 @@ import java.util.Base64;
 public class smtpSocket {
     private static DataOutputStream dos;
 
+    private static void send(String s) throws Exception {
+        dos.writeBytes(s);
+        Thread.sleep(1000); 
+        System.out.println("CLIENT: "+s);
+    }
+
     public static void main(String[] args) throws Exception{
         String user = "s1910776142@ru.ac.bd";
         String pass = "";
@@ -42,7 +48,7 @@ public class smtpSocket {
         send("MAIL FROM:<s1910776142@ru.ac.bd>\r\n");
         System.out.println("SERVER: "+bufferedReader.readLine());
 
-        send("RCPT TO:<asifzaman3180@gmail.com>\r\n");
+        send("RCPT TO:<khandokermomen919@gmail.com>\r\n");
         System.out.println("SERVER: "+bufferedReader.readLine());
 
         send("DATA\r\n");
@@ -62,9 +68,4 @@ public class smtpSocket {
         send("QUIT\r\n");
     }
 
-    private static void send(String s) throws Exception {
-        dos.writeBytes(s);
-        Thread.sleep(1000);
-        System.out.println("CLIENT: "+s);
-    }
 }
